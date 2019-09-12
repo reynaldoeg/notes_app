@@ -4,12 +4,15 @@ class FoldersController < ApplicationController
   # GET /folders
   # GET /folders.json
   def index
-    @folders = Folder.all
+    #@folders = Folder.all
+    redirect_to action: "show", id: 1
   end
 
   # GET /folders/1
   # GET /folders/1.json
   def show
+    @subfolders = @folder.folders
+    @notes = @folder.notes
   end
 
   # GET /folders/new

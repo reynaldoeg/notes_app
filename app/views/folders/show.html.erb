@@ -1,14 +1,52 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @folder.name %>
-</p>
-
-<p>
-  <strong>Parent:</strong>
-  <%= @folder.parent_id %>
-</p>
-
-<%= link_to 'Edit', edit_folder_path(@folder) %> |
-<%= link_to 'Back', folders_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <p id="notice"><%= notice %></p>
+      
+      <p>
+        <strong>Name:</strong>
+        <%= @folder.name %>
+      </p>
+      
+      <p>
+        <strong>Parent:</strong>
+        <%= @folder.parent_id %>
+      </p>
+    
+      <%= link_to 'Edit', edit_folder_path(@folder) %> |
+      <%= link_to 'Back', folders_path %>
+      
+      
+      <div id="files_and_folders">
+        <table  class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Fecha modificación</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @subfolders.each do |folder| -%>
+              <tr class="<%= cycle('even','odd') %>">
+                <td class="file_name"><%= folder.name %></td>
+                <td class="file_size">carpeta</td>
+                <td class="file_modified"><%= l folder.updated_at, :format => :short %></td>
+                <td></td>
+              </tr>
+            <% end -%>
+            <% @notes.each do |note| -%>
+              <tr class="<%= cycle('even','odd') %>">
+                <td class="file_name"><%= note.name %></td>
+                <td class="file_size">nota</td>
+                <td class="file_modified"><%= l note.updated_at, :format => :short %></td>
+                <td></td>
+              </tr>
+            <% end -%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
