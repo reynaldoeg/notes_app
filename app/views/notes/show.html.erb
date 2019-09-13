@@ -1,19 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @note.name %>
-</p>
+<div class="jumbotron">
 
-<p>
-  <strong>Content:</strong>
-  <%= @note.content %>
-</p>
+  <h1>
+    <%= @note.name %>
+  </h1>
+  
+  <p style="margin: 10px 5px; font-size:18px">
+    <%= @note.content %>
+  </p>
 
-<p>
-  <strong>Folder:</strong>
-  <%= @note.folder_id %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+<%= link_to 'Atras', { :controller => "folders", :action => "show", :id => @note.folder_id }, class: "btn btn-primary" %>

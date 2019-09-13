@@ -11,22 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, 'Nombre' %>
+    <%= form.text_field :name, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="form-group">
+    <%= form.label :content, 'Contenido' %>
+    <%= form.text_area :content, {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= form.label :folder_id %>
-    <%= form.number_field :folder_id %>
-  </div>
+  <input type="hidden" id="note_folder_id" name="note[folder_id]"  value="<%= params[:id] %>" />
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit'Crear', :class => 'btn btn-primary' %>
+
 <% end %>
