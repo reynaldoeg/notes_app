@@ -1,52 +1,51 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md">
-      <p id="notice"><%= notice %></p>
-      
-      <p>
-        <strong>Name:</strong>
-        <%= @folder.name %>
-      </p>
-      
-      <p>
-        <strong>Parent:</strong>
-        <%= @folder.parent_id %>
-      </p>
-    
-      <%= link_to 'Edit', edit_folder_path(@folder) %> |
-      <%= link_to 'Back', folders_path %>
-      
-      
-      <div id="files_and_folders">
-        <table  class="table table-striped">
-          <thead class="thead-dark">
-            <tr>
-              <th>Nombre</th>
-              <th>Tipo</th>
-              <th>Fecha modificación</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @subfolders.each do |folder| -%>
-              <tr class="<%= cycle('even','odd') %>">
-                <td class="file_name"><%= folder.name %></td>
-                <td class="file_size">carpeta</td>
-                <td class="file_modified"><%= l folder.updated_at, :format => :short %></td>
-                <td></td>
-              </tr>
-            <% end -%>
-            <% @notes.each do |note| -%>
-              <tr class="<%= cycle('even','odd') %>">
-                <td class="file_name"><%= note.name %></td>
-                <td class="file_size">nota</td>
-                <td class="file_modified"><%= l note.updated_at, :format => :short %></td>
-                <td></td>
-              </tr>
-            <% end -%>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @folder.name %>
+</h1>
+
+<%= link_to 'Crear Folder', { :controller => "folders", :action => "new", :id => @folder.id }, class: "btn btn-primary" %>
+<%= link_to 'Crear Nota', { :controller => "notes", :action => "new", :id => @folder.id }, class: "btn btn-primary" %>
+
+<br><br>
+
+<div id="files_and_folders">
+  <table  class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Fecha modificación</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @folder.id != 1 %>
+      <tr>
+        <td><%= link_to 'Up', { :controller => "folders", :action => "show", :id => @folder.parent_id } %></th>
+        <td>--</th>
+        <td>--</th>
+        <th colspan="2"></th>
+      </tr>
+      <% end %>
+      <% @subfolders.each do |subfolder| -%>
+        <tr class="<%= cycle('even','odd') %>">
+          <td><%= link_to subfolder.name, subfolder %></td>
+          <td>carpeta</td>
+          <td><%= l subfolder.updated_at, :format => :short %></td>
+          <td><%= link_to 'Editar', { :controller => "folders", :action => "edit", :id => subfolder.id } %></td>
+          <td><%= link_to 'Eliminar', subfolder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end -%>
+      <% @notes.each do |note| -%>
+        <tr class="<%= cycle('even','odd') %>">
+          <td><%= link_to note.name, note %></td>
+          <td class="file_size">nota</td>
+          <td class="file_modified"><%= l note.updated_at, :format => :short %></td>
+          <td><%= link_to 'Editar', { :controller => "notes", :action => "edit", :id => @folder.id } %></td>
+          <td><%= link_to 'Eliminar', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
 </div>

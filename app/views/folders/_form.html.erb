@@ -11,17 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, 'Nombre' %>
+    <%= form.text_field :name, {:class => 'form-control'} %>
   </div>
+  
+  <input type="hidden" id="folder_parent_id" name="folder[parent_id]"  value="<%= params[:id] %>" />
 
-  <div class="field">
-    <%= form.label :parent_id %>
-    <%= form.number_field :parent_id %>
-  </div>
+  <%= form.submit 'Guardar', :class => 'btn btn-primary' %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

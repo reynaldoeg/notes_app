@@ -1,3 +1,13 @@
 // Place all the styles related to the Folders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.btn-primary, a.btn-primary:visited{
+  color: #fff !important;
+}
+a.btn-danger, a.btn-danger:visited{
+  color: #fff !important;
+}
+td a:hover{
+  background-color: #fff !important;
+}
