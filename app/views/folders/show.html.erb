@@ -25,7 +25,7 @@
         <td><%= link_to 'Up', { :controller => "folders", :action => "show", :id => @folder.parent_id } %></th>
         <td>--</th>
         <td>--</th>
-        <th colspan="2"></th>
+        <th></th>
       </tr>
       <% end %>
       <% @subfolders.each do |subfolder| -%>
@@ -33,7 +33,6 @@
           <td><%= link_to subfolder.name, subfolder %></td>
           <td>carpeta</td>
           <td><%= l subfolder.updated_at, :format => :short %></td>
-          <td><%= link_to 'Editar', { :controller => "folders", :action => "edit", :id => subfolder.id } %></td>
           <td><%= link_to 'Eliminar', subfolder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end -%>
@@ -42,7 +41,6 @@
           <td><%= link_to note.name, note %></td>
           <td class="file_size">nota</td>
           <td class="file_modified"><%= l note.updated_at, :format => :short %></td>
-          <td><%= link_to 'Editar', { :controller => "notes", :action => "edit", :id => @folder.id } %></td>
           <td><%= link_to 'Eliminar', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end -%>
