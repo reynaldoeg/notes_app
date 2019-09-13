@@ -8,8 +8,13 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-9">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
