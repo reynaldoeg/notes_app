@@ -1,24 +1,5 @@
-# README
+# Notes App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ejemplo de aplicación en Ruby on Rails, el cual simula un un sistema de archivos.
+La app muestra una carpeta root de donde colgaran todas las demás carpetas y notas, estando en cualquier carpeta, se mostrarán todas las subcarpetas  de la misma y tendrá la opción para crear una nueva carpeta o una nueva nota.
+Al dar click en alguna de las carpetas listadas, ésta se abrirá y mostrará su contenido, permitiendo crear más subcarpetas y notas. 
